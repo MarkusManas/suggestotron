@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% @topic.each do |topic| %>
+    <% @topics.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic %></td>
         <td><%= pluralize(topic.votes.count, "vote") %></td>

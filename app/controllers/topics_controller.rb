@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     #@topics = Topic.all
-    @topics = Topic.includes(:votes).group('topics.id').order('count(topics.id) DESC')
+    @topics = Topic.left_outer_joins(:votes).group('topics.id').order('count(topics.id) DESC')
   end
 
   def upvote

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   		post 'upvote'
   	end
   	member do
-  		delete 'downvote'
+  		post 'downvote'
   	end
   end
 

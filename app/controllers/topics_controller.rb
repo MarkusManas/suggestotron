@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
   # GET /topics.json
   def index
     #@topics = Topic.all
-    @topics = Topic.left_outer_joins(:votes).group('topics.id').order('count(topics.id) DESC')
+    @topics = Topic.all
   end
 
   def upvote
@@ -16,11 +16,10 @@ class TopicsController < ApplicationController
 
   def downvote
     @topic = Topic.find(params[:id])
-    if @topic.votes.first.present?
-      @topic.votes.first.destroy
-    end
+    @topic.downvotes.create
     redirect_to(topics_path)
   end
+
 
 
   # GET /topics/1

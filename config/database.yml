@@ -1,10 +1,20 @@
+
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
 development:
   adapter: postgresql
   host: localhost
   username: pguser
   password: pguser
-  database: edpogi
+  database: bridge
 
 test:
   <<: *default
-  database: edpogi_test
+  database: bridge_test
+
+production:
+  <<: *default
+  database: bridge_production

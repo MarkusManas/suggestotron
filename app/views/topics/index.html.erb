@@ -11,10 +11,10 @@
   </thead>
 
   <tbody>
-    <% @topics.each do |topic| %>
+    <% Topic.sorted_by_totalvotes.each do |topic| %>
       <tr>
         <td><%= link_to topic.title, topic %></td>
-        <td><%= pluralize(topic.votes.count-topic.downvotes.count, "vote") %></td>
+        <td><%= pluralize(topic.totalvotes, "vote") %></td>
         <td><%= button_to '+1', upvote_topic_path(topic), method: :post %></td>
         <td><%= button_to '-1', downvote_topic_path(topic), method: :post %></td>
         <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>

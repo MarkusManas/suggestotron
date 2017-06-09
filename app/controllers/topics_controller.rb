@@ -3,10 +3,6 @@ class TopicsController < ApplicationController
 
   # GET /topics
   # GET /topics.json
-  def index
-    #@topics = Topic.all
-    @topics = Topic.all
-  end
 
   def upvote
     @topic = Topic.find(params[:id])
@@ -21,6 +17,9 @@ class TopicsController < ApplicationController
   end
 
 
+  def index
+    @topics = Topic.sorted_by_totalvotes
+  end
 
   # GET /topics/1
   # GET /topics/1.json
